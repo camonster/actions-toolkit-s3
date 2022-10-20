@@ -105,11 +105,11 @@ function getCacheEntryS3(s3Options, s3BucketName, keys, paths) {
         core.debug(`toolkit.getCacheEntryS3.notPrimaryKey:::, ${notPrimaryKey}`);
         const found = searchRestoreKeyEntry(notPrimaryKey, contents);
         core.debug(`toolkit.getCacheEntryS3.found:::, ${JSON.stringify(found)}`);
-        if (found != null && found.creationTime) {
+        if (found != null && found.LastModified) {
             core.debug('ccccccccccccccccccccccccccccc');
             return {
                 cacheKey: found.Key,
-                creationTime: found.creationTime.toString()
+                creationTime: found.LastModified.toString()
             };
         }
         return null;
@@ -131,8 +131,8 @@ function _searchRestoreKeyEntry(notPrimaryKey, entries) {
         if (entry.Key === notPrimaryKey) {
             // extractly match, Use this entry
             return {
-                cacheKey: entry.Key,
-                creationTime: (_a = entry.creationTime) === null || _a === void 0 ? void 0 : _a.toString()
+                Key: entry.Key,
+                LastModified: (_a = entry.LastModified) === null || _a === void 0 ? void 0 : _a.toString()
             };
         }
         if ((_b = entry.Key) === null || _b === void 0 ? void 0 : _b.startsWith(notPrimaryKey)) {
