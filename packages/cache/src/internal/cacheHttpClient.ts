@@ -145,9 +145,14 @@ async function getCacheEntryS3(
     )
   }
 
+  core.debug('bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb')
   // not found in primary key, So fallback to next keys
   const notPrimaryKey = keys.slice(1)
+  core.debug(`toolkit.getCacheEntryS3.notPrimaryKey:::, ${notPrimaryKey}`)
+
   const found = searchRestoreKeyEntry(notPrimaryKey, contents)
+  core.debug(`toolkit.getCacheEntryS3.found:::, ${found}`)
+
   if (found != null&& found.LastModified) {
     return {
       cacheKey: found.Key,
