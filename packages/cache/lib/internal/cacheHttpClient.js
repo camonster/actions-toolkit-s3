@@ -85,8 +85,9 @@ function getCacheEntryS3(s3Options, s3BucketName, keys, paths) {
             }
             core.debug(`toolkit.getCacheEntryS3.response.json:::, ${JSON.stringify(response)}`);
             const found = response.Contents.find((content) => content.Key === primaryKey);
-            core.debug(`toolkit.getCacheEntryS3.found:::, ${found}`);
+            core.debug(`toolkit.getCacheEntryS3.found.json:::, ${JSON.stringify(found)}`);
             if (found && found.LastModified) {
+                core.debug('ccccccccccccccccccccccccccccc');
                 return {
                     cacheKey: primaryKey,
                     creationTime: found.LastModified.toString()
