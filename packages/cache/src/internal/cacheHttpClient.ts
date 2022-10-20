@@ -108,6 +108,7 @@ async function getCacheEntryS3(
   keys: string[],
   paths: string[],
 ): Promise<ArtifactCacheEntry | null> {
+  core.debug('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa')
   const primaryKey = keys[0]
 
   const s3client = new S3Client(s3Options)

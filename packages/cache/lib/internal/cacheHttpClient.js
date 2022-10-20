@@ -70,6 +70,7 @@ exports.getCacheVersion = getCacheVersion;
 function getCacheEntryS3(s3Options, s3BucketName, keys, paths) {
     var _a;
     return __awaiter(this, void 0, void 0, function* () {
+        core.debug('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
         const primaryKey = keys[0];
         const s3client = new client_s3_1.S3Client(s3Options);
         const param = {
