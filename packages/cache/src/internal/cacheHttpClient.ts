@@ -100,7 +100,7 @@ export function getCacheVersion(
 interface _content {
   Key?: string,
   LastModified?: Date,
-  CreationTime?: Date,
+  creationTime?: Date,
 }
 
 async function getCacheEntryS3(
@@ -155,11 +155,11 @@ async function getCacheEntryS3(
   const found = searchRestoreKeyEntry(notPrimaryKey, contents)
   core.debug(`toolkit.getCacheEntryS3.found:::, ${JSON.stringify(found)}`)
 
-  if (found != null&& found.CreationTime) {
+  if (found != null&& found.creationTime) {
     core.debug('ccccccccccccccccccccccccccccc')
     return {
       cacheKey: found.Key,
-      creationTime: found.CreationTime.toString()
+      creationTime: found.creationTime.toString()
     }
   }
 
@@ -186,7 +186,7 @@ function _searchRestoreKeyEntry(notPrimaryKey: string, entries: _content[]): _co
       // extractly match, Use this entry
       return {
         cacheKey: entry.Key,
-        creationTime: entry.CreationTime?.toString()
+        creationTime: entry.creationTime?.toString()
       } as _content
     }
 
