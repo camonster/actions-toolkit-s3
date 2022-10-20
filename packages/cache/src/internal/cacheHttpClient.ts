@@ -242,7 +242,7 @@ export async function getCacheEntry(
     throw new Error('Cache not found.')
   }
   core.setSecret(cacheDownloadUrl)
-  core.debug(`Cache Result:`)
+  core.debug(`Cache Result:toolkittttttttttttttttttttt`)
   core.debug(JSON.stringify(cacheResult))
 
   return cacheResult
