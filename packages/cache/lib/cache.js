@@ -89,6 +89,12 @@ function restoreCache(paths, primaryKey, restoreKeys, options, s3Options, s3Buck
         const cacheEntry = yield cacheHttpClient.getCacheEntry(keys, paths, {
             compressionMethod
         }, s3Options, s3BucketName);
+        core.debug(`toolkit.restoreCache.cacheEntry:::, ${cacheEntry}`);
+        core.debug(`toolkit.restoreCache.keys:::, ${keys}`);
+        core.debug(`toolkit.restoreCache.paths:::, ${paths}`);
+        core.debug(`toolkit.restoreCache.compressionMethod:::, ${compressionMethod}`);
+        core.debug(`toolkit.restoreCache.s3Options:::, ${s3Options}`);
+        core.debug(`toolkit.restoreCache.s3BucketName:::, ${s3BucketName}`);
         if (!(cacheEntry === null || cacheEntry === void 0 ? void 0 : cacheEntry.archiveLocation) && !(cacheEntry === null || cacheEntry === void 0 ? void 0 : cacheEntry.cacheKey)) {
             // Cache not found
             return undefined;
