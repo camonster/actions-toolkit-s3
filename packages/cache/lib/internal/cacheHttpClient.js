@@ -132,7 +132,7 @@ function _searchRestoreKeyEntry(notPrimaryKey, entries) {
             // extractly match, Use this entry
             return {
                 cacheKey: entry.Key,
-                creationTime: (_a = entry.LastModified) === null || _a === void 0 ? void 0 : _a.toString()
+                creationTime: (_a = entry.CreationTime) === null || _a === void 0 ? void 0 : _a.toString()
             };
         }
         if ((_b = entry.Key) === null || _b === void 0 ? void 0 : _b.startsWith(notPrimaryKey)) {

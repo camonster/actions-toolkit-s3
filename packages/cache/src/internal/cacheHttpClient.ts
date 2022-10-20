@@ -186,7 +186,7 @@ function _searchRestoreKeyEntry(notPrimaryKey: string, entries: _content[]): _co
       // extractly match, Use this entry
       return {
         cacheKey: entry.Key,
-        creationTime: entry.LastModified?.toString()
+        creationTime: entry.CreationTime?.toString()
       } as _content
     }
 
