@@ -83,7 +83,9 @@ function getCacheEntryS3(s3Options, s3BucketName, keys, paths) {
             if (!response.Contents) {
                 throw new Error(`Cannot found object in bucket ${s3BucketName}`);
             }
+            core.debug(`toolkit.getCacheEntryS3.response:::, ${response}`);
             const found = response.Contents.find((content) => content.Key === primaryKey);
+            core.debug(`toolkit.getCacheEntryS3.found:::, ${found}`);
             if (found && found.LastModified) {
                 return {
                     cacheKey: primaryKey,
