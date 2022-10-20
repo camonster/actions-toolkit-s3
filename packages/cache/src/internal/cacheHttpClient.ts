@@ -152,9 +152,11 @@ async function getCacheEntryS3(
   core.debug(`toolkit.getCacheEntryS3.notPrimaryKey:::, ${notPrimaryKey}`)
 
   const found = searchRestoreKeyEntry(notPrimaryKey, contents)
-  core.debug(`toolkit.getCacheEntryS3.found:::, ${found}`)
+  core.debug(`toolkit.getCacheEntryS3.found:::, ${JSON.stringify(found)}`)
 
   if (found != null&& found.LastModified) {
+    core.debug('ddddddddddddddddddddddddddddddddd')
+
     return {
       cacheKey: found.Key,
       creationTime: found.LastModified.toString()

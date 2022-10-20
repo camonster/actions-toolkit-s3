@@ -104,8 +104,9 @@ function getCacheEntryS3(s3Options, s3BucketName, keys, paths) {
         const notPrimaryKey = keys.slice(1);
         core.debug(`toolkit.getCacheEntryS3.notPrimaryKey:::, ${notPrimaryKey}`);
         const found = searchRestoreKeyEntry(notPrimaryKey, contents);
-        core.debug(`toolkit.getCacheEntryS3.found:::, ${found}`);
+        core.debug(`toolkit.getCacheEntryS3.found:::, ${JSON.stringify(found)}`);
         if (found != null && found.LastModified) {
+            core.debug('ddddddddddddddddddddddddddddddddd');
             return {
                 cacheKey: found.Key,
                 creationTime: found.LastModified.toString()
