@@ -162,6 +162,8 @@ function getCacheEntry(keys, paths, options, s3Options, s3BucketName) {
         const httpClient = createHttpClient();
         const version = getCacheVersion(paths, options === null || options === void 0 ? void 0 : options.compressionMethod);
         const resource = `cache?keys=${encodeURIComponent(keys.join(','))}&version=${version}`;
+        core.debug(`getCacheEntry.resource:::`);
+        core.debug(JSON.stringify(resource));
         const response = yield requestUtils_1.retryTypedResponse('getCacheEntry', () => __awaiter(this, void 0, void 0, function* () { return httpClient.getJson(getCacheApiUrl(resource)); }));
         if (response.statusCode === 204) {
             return null;
@@ -169,6 +171,8 @@ function getCacheEntry(keys, paths, options, s3Options, s3BucketName) {
         if (!requestUtils_1.isSuccessStatusCode(response.statusCode)) {
             throw new Error(`Cache service responded with ${response.statusCode}`);
         }
+        core.debug(`getCacheEntry.response:::`);
+        core.debug(JSON.stringify(response));
         const cacheResult = response.result;
         const cacheDownloadUrl = cacheResult === null || cacheResult === void 0 ? void 0 : cacheResult.archiveLocation;
         if (!cacheDownloadUrl) {

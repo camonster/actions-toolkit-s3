@@ -220,6 +220,9 @@ export async function getCacheEntry(
     keys.join(',')
   )}&version=${version}`
 
+  core.debug(`getCacheEntry.resource:::`)
+  core.debug(JSON.stringify(resource))
+
   const response = await retryTypedResponse('getCacheEntry', async () =>
     httpClient.getJson<ArtifactCacheEntry>(getCacheApiUrl(resource))
   )
@@ -229,6 +232,9 @@ export async function getCacheEntry(
   if (!isSuccessStatusCode(response.statusCode)) {
     throw new Error(`Cache service responded with ${response.statusCode}`)
   }
+
+  core.debug(`getCacheEntry.response:::`)
+  core.debug(JSON.stringify(response))
 
   const cacheResult = response.result
   const cacheDownloadUrl = cacheResult?.archiveLocation
